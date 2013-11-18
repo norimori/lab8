@@ -16,6 +16,11 @@ $(function(){
 		totalPrice: $('.total-price')
 	});
 
+	//Restore cart items from local storage JSON data
+	var cartJSON = localStorage.getItem('cart');
+	if (cartJSON && cartJSON.length > 0) {
+	    cartModel.setItems(JSON.parse(cartJSON));
+	}
 
 	var moviesModel = createMoviesModel({ //create movie
 	    url: 'https://courses.washington.edu/info343/ajax/movies/' //location of movie's JSON data
@@ -64,6 +69,11 @@ $(function(){
 		        alert(errorThrown || status);
 		    }
 		}); //ajax()
+	});
+
+	//Save cart items to local storage.
+	cartModel.on('change', function(){
+    	localStorage.setItem('cart', cartModel.toJSON());
 	});
 	
 }); //doc ready()
