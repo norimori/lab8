@@ -48,8 +48,25 @@ $(function(){
 	    });
 	}); //addToCart event
 
-	$('.place-order').click(function() {
+	/*$('.place-order').click(function() {
 		console.log(cartModel.toJSON());
-	});
+	});*/
+	
+	//Placing an order
+	$.ajax({
+	    url: 'https://courses.washington.edu/info343/ajax/movies/orders/',
+	    type: 'POST',
+	    data: cartModel.toJSON(),
+	    contentType: 'application/json',
+	    success: function(responseData) {
+	        alert(responseData.message);
+	        cartModel.setItems([]); //Order has now been posted, reset cart.
+	    },
+	    error: function(jqXHR, status, errorThrown) {
+	        //error with post--alert user
+	        alert(errorThrown || status);
+	    }
+	}); //ajax()
+
 }); //doc ready()
 
