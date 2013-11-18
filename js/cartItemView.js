@@ -11,7 +11,7 @@ function createCartItemView(config) {
 
 	//Handle click removing item from cart.
 	view.afterRender = function(clonedTemplate, model) {
-		clonedTemplate.find('.remote-item').click(function() {
+		clonedTemplate.find('.remove-item').click(function() {
 			view.cartModel.removeItem(model);
 		});
 	}; //afterRender()
