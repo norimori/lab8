@@ -17,7 +17,7 @@ function createCartModel(config) {
 		var i;
 		var totalPrice = 0;
 		for (i = 0; i < this.items.length; i++) {
-			totalPrice += this.items[idx].price;
+			totalPrice += this.items[i].price;
 		}
 		return totalPrice.toFixed(2); //Up to 2 decimal places
 	}; //getTotalPrice()
