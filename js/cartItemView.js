@@ -7,5 +7,14 @@
 */
 
 function createCartItemView(config) {
+	var view = createTemplateView(config); //new TemplateView instance
 
+	//Handle click removing item from cart.
+	view.afterRender = function(clonedTemplate, model) {
+		clonedTemplate.find('.remote-item').click(function() {
+			view.cartModel.removeItem(model);
+		});
+	}; //afterRender()
+
+	return view;
 } //createCartItemView()
