@@ -53,7 +53,7 @@ $(function(){
 	});*/
 	
 	//Placing an order
-	$.ajax({
+	$('.place-order').click($.ajax({
 	    url: 'https://courses.washington.edu/info343/ajax/movies/orders/',
 	    type: 'POST',
 	    data: cartModel.toJSON(),
@@ -66,7 +66,7 @@ $(function(){
 	        //error with post--alert user
 	        alert(errorThrown || status);
 	    }
-	}); //ajax()
+	})); //ajax()
 
 }); //doc ready()
 
