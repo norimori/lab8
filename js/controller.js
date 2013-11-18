@@ -9,18 +9,19 @@ $(function(){
 	};
 
 	var cartModel = createCartModel(); //create cart
-	var cartView = createCartView({ //create cart view
-		model: cartModel,
-		template: $('.cart-item-template'),
-		container: $('.cart-items-container'),
-		totalPrice: $('.total-price')
-	});
 
 	//Restore cart items from local storage JSON data
 	var cartJSON = localStorage.getItem('cart');
 	if (cartJSON && cartJSON.length > 0) {
 	    cartModel.setItems(JSON.parse(cartJSON));
 	}
+	
+	var cartView = createCartView({ //create cart view
+		model: cartModel,
+		template: $('.cart-item-template'),
+		container: $('.cart-items-container'),
+		totalPrice: $('.total-price')
+	});
 
 	var moviesModel = createMoviesModel({ //create movie
 	    url: 'https://courses.washington.edu/info343/ajax/movies/' //location of movie's JSON data
